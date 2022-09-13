@@ -13,15 +13,15 @@
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-								<!-- Intro -->
-								<div id="intro">
-									<h1>Welcome!<br />
-									I'm glad you're here.</h1>
-									<p>Let's make something special.</p>
-									<ul class="actions">
-										<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-									</ul>
-								</div>
+			<!-- Intro -->
+			<div id="intro">
+				<h1>Welcome!<br />
+				I'm glad you're here.</h1>
+				<p>Let's make something special.</p>
+				<ul class="actions">
+					<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+				</ul>
+			</div>
 
 				<!-- Header -->
 					<header id="header">
@@ -51,6 +51,16 @@
 								<h3>Email</h3>
 								<p><a href="timalone1991@gmail.com" target="_blank">timalone1991@gmail.com</a></p>
 							</section>
+							<section class="alt">
+								<form onsubmit="sendEmail(); reset(); return false;">
+									<h3>GET IN TOUCH</h3>
+									<input type="text" id="name" placeholder="Your Name" required>
+									<input type="email" id="email" placeholder="Email Address" required>
+									<input type="text" id="phone" placeholder="Phone Number" required>
+									<textarea id="message" rows="4" placeholder="How can I help you?"></textarea>
+									<button type="submit">Send</button>
+								</form>
+							</section>
 							<section>
 							<h3>Social</h3>
 							<ul class="icons alt">
@@ -76,6 +86,25 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="https://smtpjs.com/v3/smtp.js"></script>
+			<script src="">
+				function sendEmail() {
+					Email.send({
+						Host : "smtp.gmail.com",
+						Username : "timalone1991@gmail.com",
+						Password : "Kettles21!",
+						To : 'timalone1991@gmail.com',
+						From : document.getElementById("email").value,
+						Subject : "New Contact Form Inquiry",
+						Body : "Name: " + document.getElementById("name").value + 
+						"<br> Email: " + document.getElementById("email").value + 
+						"<br> Phone: " + document.getElementById("phone").value + 
+						"<br> Message: " + document.getElementById("message").value
+					}).then(
+					  message => alert(message)
+					);
+				}
+			</script>
 
 	</body>
 </html>
